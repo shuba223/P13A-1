@@ -6,6 +6,14 @@ using namespace std;
 
 const int SIZE = 26;
 
+void pressEnterToContinue(void) {
+    char c;
+    cout << "Press Enter to continue...";
+    cin.ignore(1024, '\n');
+    do { cin.get(c); } while (c != '\n' && c != EOF);
+    return;
+}
+
 int main() {
     string datafile;
     cout << "Enter filename: ";
@@ -82,11 +90,15 @@ int main() {
         }
     }
 
+
     cout << "Total number of letters: " << charCount << endl;
     cout << "Frequency:\n";
 
     for (int i = 0; i < SIZE; i++) {
         cout << "'" << static_cast<char>('A' + i) << "': " << fixed << setprecision(3) << (vars[i] / double(charCount)) * 100 << endl;
     }
+    pressEnterToContinue();
     return 0;
 }
+
+
